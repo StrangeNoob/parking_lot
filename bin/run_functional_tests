@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+INPUTS_DIR="functional_spec/inputs"
+EXPECTED_DIR="functional_spec/expected_output"
+PASS=0
+FAIL=0
+
+for input_file in "$INPUTS_DIR"/*.txt; do
+  scenario=$(basename "$input_file")
+  expected_file="$EXPECTED_DIR/$scenario"
+
+  if [ ! -f "$expected_file" ]; then
+    echo "SKIP  $scenario (no expected output file)"
+    continue
+  fi
+
+  actual=$(bin/parking_lot "$input_file")
+  # Normalize trailing whitespace and trailing newlines for comparison
+  expected=$(cat "$expected_file")
+
+  # Compare with whitespace normalization
+  if diff <(echo "$actual" | sed 's/[[:space:]]*$//') \
+          <(echo "$expected" | sed 's/[[:space:]]*$//') > /dev/null 2>&1; then
+    echo "PASS  $scenario"
+    PASS=$((PASS + 1))
+  else
+    echo "FAIL  $scenario"
+    diff <(echo "$actual" | sed 's/[[:space:]]*$//') \
+         <(echo "$expected" | sed 's/[[:space:]]*$//') || true
+    FAIL=$((FAIL + 1))
+  fi
+done
+
+echo ""
+echo "Results: $PASS passed, $FAIL failed"
+
+if [ "$FAIL" -gt 0 ]; then
+  exit 1
+fi
