@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    command: ["file_inputs.txt"]
+
+  dev:
+    build:
+      context: .
+      target: build
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    command: ["npm", "run", "test:watch"]
+
+volumes:
+  node_modules:

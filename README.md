@@ -66,6 +66,30 @@ For watch mode during development:
 npm run test:watch
 ```
 
+## Docker
+
+Run the project without a local Node.js install:
+
+```bash
+# Build the production image
+docker compose build app
+
+# Run in file mode
+docker compose run --rm app file_inputs.txt
+
+# Run in interactive mode
+docker compose run --rm -i app
+
+# Run tests in watch mode (dev container)
+docker compose run --rm dev
+
+# Run tests once (dev container)
+docker compose run --rm dev npm test
+
+# Run functional tests (dev container)
+docker compose run --rm dev bin/run_functional_tests
+```
+
 ## Project Structure
 
 ```
