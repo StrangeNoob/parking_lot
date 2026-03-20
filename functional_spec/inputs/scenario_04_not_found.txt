@@ -1,0 +1,8 @@
+create_parking_lot 3
+park MH-01-AA-0001 Black
+park MH-01-AA-0002 Black
+registration_numbers_for_cars_with_colour White
+slot_numbers_for_cars_with_colour White
+slot_number_for_registration_number GJ-01-AA-9999
+registration_numbers_for_cars_with_colour Black
+slot_numbers_for_cars_with_colour Black

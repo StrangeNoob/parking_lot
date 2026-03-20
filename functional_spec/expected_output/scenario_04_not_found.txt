@@ -1,0 +1,8 @@
+Created a parking lot with 3 slots
+Allocated slot number: 1
+Allocated slot number: 2
+Not found
+Not found
+Not found
+MH-01-AA-0001, MH-01-AA-0002
+1, 2

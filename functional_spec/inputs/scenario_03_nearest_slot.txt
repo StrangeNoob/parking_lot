@@ -1,0 +1,13 @@
+create_parking_lot 5
+park AA-01-AA-0001 Red
+park AA-01-AA-0002 Red
+park AA-01-AA-0003 Red
+park AA-01-AA-0004 Red
+park AA-01-AA-0005 Red
+leave 3
+leave 1
+park AA-01-BB-0001 Blue
+park AA-01-BB-0002 Blue
+status
+slot_numbers_for_cars_with_colour Blue
+slot_numbers_for_cars_with_colour Red
