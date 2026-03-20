@@ -86,6 +86,28 @@ bin/parking_lot                   # Interactive mode
 - **Commit style:** Conventional Commits — `<type>: <subject>`
   - `feat:` new features, `test:` test changes, `fix:` bug fixes, `refactor:` etc.
 
+## Docker
+
+```bash
+# Build the production image
+docker compose build app
+
+# Run in file mode
+docker compose run --rm app file_inputs.txt
+
+# Run in interactive mode
+docker compose run --rm -i app
+
+# Run tests in watch mode (dev container)
+docker compose run --rm dev
+
+# Run tests once (dev container)
+docker compose run --rm dev npm test
+
+# Run functional tests (dev container)
+docker compose run --rm dev bin/run_functional_tests
+```
+
 ## Testing Notes
 
 - Jest config lives in `package.json` (not a separate config file)
